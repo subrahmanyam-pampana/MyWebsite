@@ -6,91 +6,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>INJECT EEE</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+    <link rel="stylesheet" href="styles.css">
 
-    </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" id="Home">
+        <div class="w3-bar w3-black">
+            <a href="#Home" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Networks</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Power systems</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Power Electronics</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Control Systems</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Mathamatics</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Machines</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Measurements</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">EMFT</a>
+            <a href="admin.html" target="_blank" class="w3-bar-item w3-button w3-mobile">Admin</a>
+            <div class="w3-dropdown-hover w3-mobile">
+                <button class="w3-button">Dropdown <i class="fa fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block w3-dark-grey">
+                    <a href="#" class="w3-bar-item w3-button w3-mobile">Link 1</a>
+                    <a href="#" class="w3-bar-item w3-button w3-mobile">Link 2</a>
+                    <a href="#" class="w3-bar-item w3-button w3-mobile">Link 3</a>
+                </div>
+
+            </div>
+        </div>
         <h1>
             Inject EEE Education system
         </h1>
         <p>Welcome to online education system GATE 2022</p>
-
     </div>
+
     <div class="dataContainer">
-        <div>
-            <div class="leftPannel">
-                <div class="quetionDiv">
-                    <p><span class='qno'>1.</span>The region specified by in cylindrical coordinates has volume of ________.
-                    </p>
-                    <input type="text">
-                    <br>
-                    <button class="Solution-btn" id="btn1" value="H" onclick="fnshowHide(this)">View solution</button>
-                    <div class="solution-div">
-                        <p>solution</p>
-                        <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
-                    </div>
-                </div>
-
-                <div class="quetionDiv">
-                    <p><span class='qno'>2.</span>The region specified by in cylindrical coordinates has volume of ________.
-                    </p>
-                    <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label><br>
-                    <input type="radio" id="female" name="gender" value="female">
-                    <label for="female">Female</label><br>
-                    <input type="radio" id="other" name="gender" value="other">
-                    <label for="other">Other</label>
-                    <br>
-                    <button class="Solution-btn" id="btn1" value="H" onclick="fnshowHide(this)">View Solution</button>
-                    <div class="solution-div">
-                        <p>solution</p>
-                        <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
-                    </div>
+        <div class="leftPannel" id="parentDiv">
+            <div class="quetionDiv">
+                <p><span class='qno'>1.</span>The region specified by in cylindrical coordinates has volume of ________.
+                </p>
+                <input type="text">
+                <br>
+                <button class="button" id="btn1" value="H" onclick="fnshowHide(this)">View solution</button>
+                <div class="solution-div">
+                    <p>solution</p>
+                    <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
                 </div>
             </div>
-            <div class="rightPannel">
-                <form class="form" id="addNewQuetionForm">
 
-                    <textarea class=" userNote " placeholder=" write your quetion here " type="text " name="quetion "></textarea> <br>
-                    <input placeholder="enter comma seperated options " type=" text " name="options "> <br>
-                    <input type="text " placeholder="Enter answer in a,b,c.... " name=" answer "> <br>
-                    <textarea class="userNote " type="text " placeholder="write your solution " name="solution "></textarea> <br>
-                    <button>Add Quetion</button>
-                </form>
+            <div class="quetionDiv">
+                <p><span class='qno'>2.</span>
+                    <span>The region specified by in cylindrical coordinates has volume of ________.</span>
+                </p>
+                <table>
+                    <tr class="option-tr">
+                        <td class="option-text">A</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr class="option-tr">
+                        <td class="option-text">B</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr class="option-tr">
+                        <td class="option-text">C</td>
+                        <td>Male</td>
+                    </tr>
+                    <tr class="option-tr">
+                        <td class="option-text">D</td>
+                        <td>Male</td>
+                    </tr>
+                </table>
 
+                <button class="button" id="btn2" onclick="fnCheckAnswer(this)">Check Answer</button>
+                <button class="button" id="btn1" value="H" onclick="fnshowHide(this)">View Solution</button>
 
-
+                <div class="solution-div">
+                    <p>solution</p>
+                    <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
+                </div>
             </div>
+        </div>
+        <div class="rightPannel" style="display: none;">
+            <form class="form" id="addNewQuetionForm">
+                <textarea class=" textArea " placeholder=" write your quetion here " type="text " name="quetion"></textarea> <br>
+                <select name="type" id="type">
+                <option value="mcq">MCQ</option>
+                <option value="netType">Net Type</option>
+            </select>
+                <br>
+                <textarea class="textArea" placeholder="enter comma seperated options " type=" text " name="options"></textarea> <br>
+                <select name="answer" id="answer">
+                <option value="A">Option A</option>
+                <option value="B">Option B</option>
+                <option value="C">Option C</option>
+                <option value="D">Option D</option>
+            </select>
+                <br>
+
+                <select name="subject">
+               <option value="power Systems">power Systems</option>
+               <option value="emft">emft</option>
+               <option value="machines">machines</option>
+               <option value="networks">networks</option>
+            </select>
+                <br><textarea class="textArea " type="text " placeholder="write your solution" name="solution"></textarea> <br>
+                <button class="button">Add quetion</button>
+                <!-- <input class="button" type="reset" name="reset" value="Reset" /> -->
+            </form>
         </div>
     </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
+
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js "></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js"></script>
 
     <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         var firebaseConfig = {
-            apiKey: "AIzaSyCdtL31Ib2CbZNreWUS66v6ZK8dQPSbz48 ",
-            authDomain: "inject-eee-gate.firebaseapp.com ",
-            projectId: "inject-eee-gate ",
-            storageBucket: "inject-eee-gate.appspot.com ",
-            messagingSenderId: "371849543104 ",
-            appId: "1:371849543104:web:f0bfe060974f36ddd69c25 ",
-            measurementId: "G-K4YX0BCWJV "
+            apiKey: "AIzaSyCdtL31Ib2CbZNreWUS66v6ZK8dQPSbz48",
+            authDomain: "inject-eee-gate.firebaseapp.com",
+            projectId: "inject-eee-gate",
+            storageBucket: "inject-eee-gate.appspot.com",
+            messagingSenderId: "371849543104",
+            appId: "1:371849543104:web:db26f6181807a6d6d69c25",
+            measurementId: "G-BK3NJV5ZH3"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+
         const db = firebase.firestore();
         db.settings({
             timestampsInSnapshots: true
