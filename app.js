@@ -1,5 +1,8 @@
 var quetionNum = 1;
-var form = document.getElementById("addNewQuetionForm");
+window.onload = () => {
+    getdata();
+
+}
 
 function fnshowHide(e) {
     if ($(e).val() == "H") {
@@ -13,58 +16,121 @@ function fnshowHide(e) {
     }
 }
 
+function fnSelectOption(e) {
+    $(e).siblings().removeClass("selectedOption");
+    $(e).addClass("selectedOption");
+}
+
 function fnrenderQuetions(doc) {
 
-    if (doc.data().type == "netType") {
+    if (doc.data().type == "mcq") {
+        var opnNum = ['A', 'B', 'C', 'D', 'F', 'G', 'H'];
 
-        let htmltext = "<div class='quetionDiv'>" +
-            "<p><span class='qno'>" + quetionNum + ". </span>" + doc.data().quetion + "</p>" +
-            "<input type='text'><br>" +
-            "<button class='Solution-btn' id='btn1' value='H' onclick='fnshowHide(this)'>View solution</button>" +
-            "<div class='solution-div'>" +
-            "<p>solution: " + doc.data().solution + "</p>" +
-            "<textarea placeholder='take your notes here.....'  class = 'userNote'>" + doc.data().note +
-            "</textarea></div></div>";
+        let div = document.createElement('div');
+        div.setAttribute('class', 'quetionDiv');
+        div.setAttribute('id', doc.id);
 
-        $(".leftPannel").append(htmltext);
+        let question = document.createElement('p');
+        let qno = document.createElement('span');
+        qno.innerHTML = quetionNum + ". ";
+        question.appendChild(qno);
+        let queText = document.createElement('span');
+        queText.innerHTML = doc.data().quetion;
+        question.appendChild(queText);
 
-    } else if (doc.data().type == "mcq") {
-
-        let htmltext = "<div class='quetionDiv'>" +
-            "<p><span class='qno'>" + doc.data().qno + ". </span>" + doc.data().quetion + "</p>";
-
+        //table
+        var table = document.createElement('table');
         var options = doc.data().options.split(',');
-        var id = 1;
-        var optionText = '';
-        options.forEach(optn => {
 
-            optionText += '<input type="radio" name="option" value = "' + optn + '" > ' +
-                '<label for="a">' + optn + '</label><br>';
-            id++;
+        options.forEach((optn, index) => {
+            let optnTr = document.createElement('tr');
+            optnTr.setAttribute('class', 'option-tr');
+            optnTr.setAttribute('onclick', 'fnSelectOption(this)');
+
+
+            //option lable
+            let optnTd1 = document.createElement('td');
+            optnTd1.setAttribute('class', 'option-text');
+            optnTd1.innerHTML = opnNum[index];
+            optnTr.appendChild(optnTd1);
+
+            //option text
+            let optnTd2 = document.createElement('td');
+            optnTd2.innerHTML = optn;
+            optnTr.appendChild(optnTd2);
+
+            table.appendChild(optnTr);
+
         });
+        //check button
+        let checkbtn = document.createElement('button');
+        checkbtn.addEventListener('click', fnCheckAnswer(this));
+        checkbtn.setAttribute('class', 'button view');
+        checkbtn.innerHTML = "Check Answer"
 
-        htmltext += optionText + "<button class='Solution-btn' id='btn1' value='H' onclick='fnshowHide(this)'>View solution</button>" +
-            "<div class='solution-div'>" +
-            "<p>solution: " + doc.data().solution + "</p>" +
-            "<textarea placeholder='take your notes here.....'  class = 'userNote'>" + doc.data().note +
-            "</textarea></div></div>";
-        $(".leftPannel").append(htmltext);
+        //view solution button
+        let viewbtn = document.createElement('button');
+        viewbtn.setAttribute('class', 'button viewSolbtn');
+        viewbtn.setAttribute('value', 'H');
+        viewbtn.innerHTML = "View Solution";
+        viewbtn.setAttribute('onclick', 'fnshowHide(this)');
+
+
+        //solution div
+        let soldiv = document.createElement('div');
+        soldiv.setAttribute('class', 'solution-div');
+
+        let solPtag = document.createElement('p');
+        solPtag.innerHTML = 'Solution: ' + doc.data().solution;
+
+        let noteTag = document.createElement('textarea');
+        noteTag.setAttribute('class', 'userNote');
+        noteTag.setAttribute('placeholder', 'take your notes here');
+        noteTag.setAttribute('value', doc.data().note);
+
+        soldiv.appendChild(solPtag);
+        soldiv.appendChild(noteTag);
+
+        //appending all the elements to div
+        div.appendChild(question);
+        div.appendChild(table);
+        div.appendChild(checkbtn);
+        div.appendChild(viewbtn);
+        div.appendChild(soldiv);
+
+        let parent = document.getElementById("parentDiv")
+        parent.appendChild(div);
+        quetionNum++;
     }
-    quetionNum++;
 }
-db.collection('quetions').get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        fnrenderQuetions(doc);
-    })
-});
 
+function getdata() {
+    db.collection('quetions').get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            fnrenderQuetions(doc);
+        })
+    });
+
+}
+
+var form = document.getElementById("addNewQuetionForm");
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     db.collection('quetions').add({
         quetion: form.quetion.value,
         options: form.options.value,
         answer: form.answer.value,
-        solution: form.solution.value
+        solution: form.solution.value,
+        subject: form.subject.value,
+        type: form.type.value
     });
-
+    $("#leftPannel").empty();
+    getdata();
 });
+
+
+
+function fnCheckAnswer(e) {
+    console.log("check answer");
+
+}
