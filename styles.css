@@ -1,139 +1,177 @@
-                                        body {
-                                            margin: 0px;
-                                        }
-                                        
-                                        body .container {
-                                            margin: 0;
-                                            width: 100%;
-                                            height: fit-content;
-                                            text-align: center;
-                                            background-color: rgb(211, 248, 248);
-                                            padding-bottom: 1px;
-                                        }
-                                        
-                                        .solution-div {
-                                            display: none;
-                                            min-height: 100px;
-                                            width: inherit;
-                                            height: max-content;
-                                            padding: 8px;
-                                            margin-top: 8px;
-                                            background: aquamarine;
-                                            transition: display 2s;
-                                            border-radius: 9px;
-                                        }
-                                        
-                                        .quetionDiv {
-                                            background-color: white;
-                                            padding: 1px 6px 12px 10px;
-                                            margin: 11px 10px 25px 10px;
-                                            border-radius: 9px;
-                                            height: fit-content;
-                                            box-shadow: 1px;
-                                            box-shadow: 0px 0px 8px 0px grey;
-                                            width: 100%;
-                                        }
-                                        
-                                        .quetionDiv table {
-                                            width: 90%;
-                                        }
-                                        
-                                        .button {
-                                            width: fit-content;
-                                            height: 30px;
-                                            color: white;
-                                            background-color: #0631ced9;
-                                            border: none;
-                                            margin-top: 10px;
-                                            font-size: 0.7rem;
-                                            margin-right: 10px;
-                                        }
-                                        
-                                        .dataContainer {
-                                            position: relative;
-                                            width: 100%;
-                                            height: 100%;
-                                        }
-                                        
-                                        .leftPannel {
-                                            margin-left: 10px;
-                                            position: absolute;
-                                            width: 90%;
-                                        }
-                                        
-                                        .rightPannel {
-                                            position: absolute;
-                                            width: 50%;
-                                            left: 52%
-                                        }
-                                        
-                                        .userNote {
-                                            resize: none;
-                                            width: inherit;
-                                            font-size: 0.7rem;
-                                        }
-                                        
-                                        .textArea {
-                                            height: 80px;
-                                            width: 560px;
-                                            resize: none;
-                                            font-size: 0.7rem;
-                                        }
-                                        
-                                        .form {
-                                            width: max-content;
-                                            height: max-content;
-                                            padding: 13px;
-                                            background-color: beige;
-                                            margin: 10px;
-                                            border-radius: 10px;
-                                        }
-                                        
-                                        .form>* {
-                                            margin: 4px;
-                                        }
-                                        
-                                        .form select {
-                                            width: fit-content;
-                                        }
-                                        
-                                        .atag {
-                                            color: white;
-                                        }
-                                        
-                                        .option-text {
-                                            display: inline-flex;
-                                            background-color: blue;
-                                            color: white;
-                                            padding: 6px;
-                                            border-radius: 50%;
-                                            height: 21px;
-                                            width: 21px;
-                                            font-size: 13px;
-                                            text-align: center;
-                                            align-items: center;
-                                            margin: 0 7px 0 0;
-                                        }
-                                        
-                                        .option-tr {
-                                            min-width: 46vw;
-                                            display: flex;
-                                            background-color: white;
-                                            height: fit-content;
-                                            padding: 5px;
-                                            border-top: 1px solid #f1f1f1;
-                                            cursor: pointer;
-                                        }
-                                        
-                                        .selectedOption {
-                                            background-color: rgba(0, 183, 255, .17);
-                                        }
-                                        
-                                        @media screen and (min-width: 800px) {
-                                            .leftPannel {
-                                                width: 50%;
-                                            }
-                                            .option-tr {
-                                                min-width: 86vh;
-                                            }
-                                        }
+                body {
+                    margin: 0px;
+                }
+                
+                body .container {
+                    margin: 0;
+                    width: 100%;
+                    height: fit-content;
+                    text-align: center;
+                    background-color: rgb(211, 248, 248);
+                    padding-bottom: 1px;
+                }
+                
+                .solution-div {
+                    display: none;
+                    min-height: 100px;
+                    width: inherit;
+                    height: max-content;
+                    padding: 8px;
+                    margin-top: 8px;
+                    background: aquamarine;
+                    transition: display 2s;
+                    border-radius: 9px;
+                }
+                
+                .quetionDiv {
+                    background-color: white;
+                    padding: 1px 6px 12px 10px;
+                    margin: 11px 10px 25px 10px;
+                    border-radius: 9px;
+                    height: fit-content;
+                    box-shadow: 1px;
+                    box-shadow: 0px 0px 8px 0px grey;
+                    width: 100%;
+                }
+                
+                .quetionDiv table {
+                    width: 90%;
+                }
+                
+                .button {
+                    width: fit-content;
+                    height: 30px;
+                    color: white;
+                    background-color: #0631ced9;
+                    border: none;
+                    margin-top: 10px;
+                    font-size: 0.7rem;
+                    margin-right: 10px;
+                }
+                
+                .dataContainer {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                }
+                
+                .leftPannel {
+                    margin-left: 10px;
+                    position: absolute;
+                    width: 90%;
+                }
+                
+                .rightPannel {
+                    position: absolute;
+                    width: 50%;
+                    left: 52%
+                }
+                
+                .userNote {
+                    resize: none;
+                    width: inherit;
+                    font-size: 0.7rem;
+                }
+                
+                .textArea {
+                    height: 80px;
+                    width: 560px;
+                    resize: none;
+                    font-size: 0.7rem;
+                }
+                
+                .form {
+                    width: max-content;
+                    height: max-content;
+                    padding: 13px;
+                    background-color: beige;
+                    margin: 10px;
+                    border-radius: 10px;
+                }
+                
+                .form>* {
+                    margin: 4px;
+                }
+                
+                .form select {
+                    width: fit-content;
+                }
+                
+                .atag {
+                    color: white;
+                }
+                
+                .option-text {
+                    display: inline-flex;
+                    background-color: blue;
+                    color: white;
+                    padding: 6px;
+                    border-radius: 50%;
+                    height: 21px;
+                    width: 21px;
+                    font-size: 13px;
+                    text-align: center;
+                    align-items: center;
+                    margin: 0 7px 0 0;
+                }
+                
+                .option-tr {
+                    min-width: 46vw;
+                    display: flex;
+                    background-color: white;
+                    height: fit-content;
+                    padding: 5px;
+                    border-top: 1px solid #f1f1f1;
+                    cursor: pointer;
+                }
+                
+                .selectedOption {
+                    background-color: rgba(0, 183, 255, .17);
+                }
+                
+                @media screen and (min-width: 800px) {
+                    .leftPannel {
+                        width: 50%;
+                    }
+                    .option-tr {
+                        min-width: 86vh;
+                    }
+                    .undoChange {
+                        width: 28px;
+                        height: 23px;
+                        border: 1px;
+                        background-color: #e5e6e9;
+                        justify-content: center;
+                        color: #706767;
+                        cursor: pointer;
+                        position: relative;
+                        left: -54px;
+                        top: -10px;
+                        border-radius: 3px;
+                        font-size: 11px;
+                        padding: 5px;
+                        display: inline;
+                        margin: 3px;
+                    }
+                }
+                
+                .delQuetion {
+                    float: right;
+                    margin: 1px;
+                    cursor: pointer;
+                }
+                
+                .qno {
+                    background-color: orange;
+                }
+                
+                .editTextArea {
+                    width: 90%;
+                    height: 200px;
+                    resize: none;
+                }
+                
+                .edit-par-div {
+                    position: relative;
+                    left: 5%;
+                }
