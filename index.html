@@ -10,6 +10,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/4bf2ef0c62.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -46,78 +47,37 @@
 
     <div class="dataContainer">
         <div class="leftPannel" id="parentDiv">
-            <div class="quetionDiv">
-                <p><span class='qno'>1.</span>The region specified by in cylindrical coordinates has volume of ________.
-                </p>
-                <input type="text">
-                <br>
-                <button class="button" id="btn1" value="H" onclick="fnshowHide(this)">View solution</button>
-                <div class="solution-div">
-                    <p>solution</p>
-                    <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
-                </div>
-            </div>
 
-            <div class="quetionDiv">
-                <p><span class='qno'>2.</span>
-                    <span>The region specified by in cylindrical coordinates has volume of ________.</span>
-                </p>
-                <table>
-                    <tr class="option-tr">
-                        <td class="option-text">A</td>
-                        <td>Male</td>
-                    </tr>
-                    <tr class="option-tr">
-                        <td class="option-text">B</td>
-                        <td>Male</td>
-                    </tr>
-                    <tr class="option-tr">
-                        <td class="option-text">C</td>
-                        <td>Male</td>
-                    </tr>
-                    <tr class="option-tr">
-                        <td class="option-text">D</td>
-                        <td>Male</td>
-                    </tr>
-                </table>
-
-                <button class="button" id="btn2" onclick="fnCheckAnswer(this)">Check Answer</button>
-                <button class="button" id="btn1" value="H" onclick="fnshowHide(this)">View Solution</button>
-
-                <div class="solution-div">
-                    <p>solution</p>
-                    <textarea placeholder="take your notes here....." name="userNote" class="userNote"></textarea>
-                </div>
-            </div>
         </div>
-        <div class="rightPannel" style="display: none;">
-            <form class="form" id="addNewQuetionForm">
-                <textarea class=" textArea " placeholder=" write your quetion here " type="text " name="quetion"></textarea> <br>
-                <select name="type" id="type">
+    </div>
+    <div class="rightPannel" style="display: none;">
+        <form class="form" id="addNewQuetionForm">
+            <textarea class=" textArea " placeholder=" write your quetion here " type="text " name="quetion"></textarea> <br>
+            <select name="type" id="type">
                 <option value="mcq">MCQ</option>
                 <option value="netType">Net Type</option>
             </select>
-                <br>
-                <textarea class="textArea" placeholder="enter comma seperated options " type=" text " name="options"></textarea> <br>
-                <select name="answer" id="answer">
+            <br>
+            <textarea class="textArea" placeholder="enter comma seperated options " type=" text " name="options"></textarea> <br>
+            <select name="answer" id="answer">
                 <option value="A">Option A</option>
                 <option value="B">Option B</option>
                 <option value="C">Option C</option>
                 <option value="D">Option D</option>
             </select>
-                <br>
+            <br>
 
-                <select name="subject">
+            <select name="subject">
                <option value="power Systems">power Systems</option>
                <option value="emft">emft</option>
                <option value="machines">machines</option>
                <option value="networks">networks</option>
             </select>
-                <br><textarea class="textArea " type="text " placeholder="write your solution" name="solution"></textarea> <br>
-                <button class="button">Add quetion</button>
-                <!-- <input class="button" type="reset" name="reset" value="Reset" /> -->
-            </form>
-        </div>
+            <br><textarea class="textArea " type="text " placeholder="write your solution" name="solution"></textarea> <br>
+            <button class="button">Add quetion</button>
+            <!-- <input class="button" type="reset" name="reset" value="Reset" /> -->
+        </form>
+    </div>
     </div>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
