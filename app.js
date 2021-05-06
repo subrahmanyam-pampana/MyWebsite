@@ -26,16 +26,29 @@ function fnrenderQuetions(doc) {
     if (doc.data().type == "mcq") {
         var opnNum = ['A', 'B', 'C', 'D', 'F', 'G', 'H'];
 
+        //quetion div
         let div = document.createElement('div');
         div.setAttribute('class', 'quetionDiv');
         div.setAttribute('id', doc.id);
 
+        //delete tag
+        let delTag = document.createElement('p');
+        delTag.setAttribute('class', 'delQuetion');
+        delTag.setAttribute('onclick', 'fnDelQuestion(this)');
+        delTag.innerHTML = 'x';
+
+        //quetion number tag
         let question = document.createElement('p');
         let qno = document.createElement('span');
-        qno.innerHTML = quetionNum + ". ";
+        qno.innerHTML = quetionNum;
+        qno.setAttribute('class', 'option-text qno')
         question.appendChild(qno);
+
+        //question text tag
         let queText = document.createElement('span');
         queText.innerHTML = doc.data().quetion;
+        queText.setAttribute('onclick', 'fnEditText(this)');
+
         question.appendChild(queText);
 
         //table
@@ -81,7 +94,20 @@ function fnrenderQuetions(doc) {
         soldiv.setAttribute('class', 'solution-div');
 
         let solPtag = document.createElement('p');
-        solPtag.innerHTML = 'Solution: ' + doc.data().solution;
+
+        //solution lable tag
+        let solLabTag = document.createElement('span');
+        solLabTag.innerHTML = 'Solution: ';
+        solLabTag.setAttribute('class', 'solLab');
+
+        //sulution span tag
+        let solStag = document.createElement('span');
+        solStag.innerHTML = doc.data().solution;
+        solStag.setAttribute('onclick', 'fnEditText(this)');
+
+        //appending to solution p tag
+        solPtag.appendChild(solLabTag);
+        solPtag.appendChild(solStag);
 
         let noteTag = document.createElement('textarea');
         noteTag.setAttribute('class', 'userNote');
@@ -92,6 +118,7 @@ function fnrenderQuetions(doc) {
         soldiv.appendChild(noteTag);
 
         //appending all the elements to div
+        div.appendChild(delTag);
         div.appendChild(question);
         div.appendChild(table);
         div.appendChild(checkbtn);
@@ -132,5 +159,74 @@ form.addEventListener('submit', (event) => {
 
 function fnCheckAnswer(e) {
     console.log("check answer");
+
+}
+
+function fnDelQuestion(e) {
+    if (confirm("Do you want to delete question")) {
+        let id = $(e).parent().attr("id");
+        if (id) {
+            db.collection('quetions').doc(id).delete();
+            $(e).parent().remove();
+        }
+    }
+
+}
+
+function fnEditText(e) {
+    var text = $(e).text();
+    var parentDiv = document.createElement('div');
+    parentDiv.setAttribute('class', 'edit-par-div');
+
+    var inputTag = document.createElement('textarea');
+    inputTag.value = text;
+    inputTag.setAttribute('class', 'editTextArea');
+
+    let saveTag = document.createElement('i');
+    saveTag.setAttribute('class', 'fas fa-check undoChange');
+    saveTag.setAttribute('onclick', 'fnSaveChages(this)');
+
+    let undoTag = document.createElement('i');
+    undoTag.setAttribute('class', 'fas fa-times undoChange');
+
+    // undoTag.setAttribute('onclick', "fnUndoChages(this)");
+
+    $(undoTag).click(() => {
+
+        fnUndoChages(event, text);
+
+    });
+
+
+    parentDiv.appendChild(inputTag);
+    parentDiv.appendChild(saveTag);
+    parentDiv.appendChild(undoTag);
+
+    $(e).parent().append(parentDiv);
+    $(e).remove();
+}
+
+function fnSaveChages(e) {
+
+    var text = $(e).siblings('.editTextArea').val();
+    console.log(text);
+    var spanTag = document.createElement('span');
+    spanTag.innerHTML = text;
+    spanTag.setAttribute('onclick', 'fnEditText(this)');
+    $(e).parent().append(spanTag);
+    $(e).parent().parent().append(spanTag);
+
+    $(e).parent().remove();
+
+}
+
+function fnUndoChages(event, text) {
+    var e = event.target;
+    var spanTag = document.createElement('span');
+    spanTag.innerHTML = text;
+
+    spanTag.setAttribute('onclick', 'fnEditText(this)');
+    $(e).parent().parent().append(spanTag);
+    $(e).parent().remove();
 
 }
