@@ -1,0 +1,70 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INJECT EEE ADMIN</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-storage.js "></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="adminStyles.css">
+</head>
+
+<body>
+    <div class="dataContainer">
+        <div class="leftPannel" style="display: block; ">
+            <form class="form" id="addNewQuestionForm">
+                <textarea class="textArea" placeholder=" write your question here" type="text" name="question"></textarea> <br>
+                <select name="type" id="type">
+                    <option value="mcq">MCQ</option>
+                    <option value="netType">Net Type</option>
+                </select>
+                <button id="add_opt_btn" type="button">Add Options</button><br>
+                <ol type="A" class="add_opt_list" id="add_opt_list">
+                </ol>
+                <select name="answer" id="answer">
+                    <option value="A">Option A</option>
+                    <option value="B">Option B</option>
+                    <option value="C">Option C</option>
+                    <option value="D">Option D</option>
+                </select>
+                <br>
+                <input list='subjects' name="subject" placeholder="Enter the subject " type="text">
+                <datalist id="subjects">
+                   <option value="power Systems">power Systems</option>
+                   <option value="emft">emft</option>
+                   <option value="machines">machines</option>
+                   <option value="networks">networks</option>
+                </datalist>
+                <input list="years" name="year" placeholder="Enter the year">
+                <datalist id="years">
+                    <option value="2021">
+                    <option value="2020">
+                    <option value="2019">
+                    <option value="2018">
+                    <option value="2017">
+                  </datalist>
+
+                <br><textarea class="textArea" type="text" placeholder="write your solution" name="solution"></textarea> <br>
+                <input type="submit" class="button">
+                <!-- <input class="button " type="reset " name="reset " value="Reset " /> -->
+            </form>
+        </div>
+        <div class="rightPannel">
+
+            <input type="file" class="uploadBtn" onchange="fnLoadFile(event)" name=" uploadQimage " id="Qimage ">
+            <input type="button" class="uploadBtn" onclick="uploadFile()" value=" Upload Image ">
+
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-analytics.js "></script>
+    <script src="../config.js "></script>
+    <script src="admin.js "></script>
+</body>
+
+</html>
