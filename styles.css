@@ -11,6 +11,19 @@
                     padding-bottom: 1px;
                 }
                 
+                .information {
+                    width: fit-content;
+                    height: 10%;
+                    display: flex;
+                    position: absolute;
+                    left: 2%;
+                    top: 12%;
+                    border-radius: 10px;
+                    padding: 7px;
+                    font-size: 0.8rem;
+                    z-index: 10;
+                }
+                
                 .solution-div {
                     display: none;
                     min-height: 100px;
@@ -23,7 +36,7 @@
                     border-radius: 9px;
                 }
                 
-                .quetionDiv {
+                .questionDiv {
                     background-color: white;
                     padding: 1px 6px 12px 10px;
                     margin: 11px 10px 25px 10px;
@@ -34,8 +47,8 @@
                     width: 100%;
                 }
                 
-                .quetionDiv table {
-                    width: 90%;
+                .questionDiv table {
+                    width: 99%;
                 }
                 
                 .button {
@@ -174,4 +187,21 @@
                 .edit-par-div {
                     position: relative;
                     left: 5%;
+                }
+                
+                .add_opt_list li {
+                    margin: 1px;
+                }
+                
+                .year_div {
+                    background-color: white;
+                    width: 47px;
+                    padding: 2px;
+                    border-radius: 6px;
+                    text-align: center;
+                    float: right;
+                }
+                
+                .year_div:hover {
+                    background-color: #edebeba6;
                 }
